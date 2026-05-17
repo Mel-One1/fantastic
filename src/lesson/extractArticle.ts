@@ -37,6 +37,18 @@ async function getActiveTab(): Promise<chrome.tabs.Tab> {
 export async function extractArticle(): Promise<Article> {
   const tab = await getActiveTab();
 
+  // Pages the browser never lets an extension script, regardless of
+  // permissions. Give a precise message instead of a generic failure.
+  const url = tab.url ?? '';
+  if (!/^https?:\/\//i.test(url)) {
+    throw new ExtractionError(
+      'Diese Seite kann nicht gelesen werden. Öffne einen normalen ' +
+        'Webartikel (http/https) – interne Seiten wie chrome://, der ' +
+        'Chrome Web Store, der Neuer-Tab-Bildschirm oder PDF-Dateien ' +
+        'sind nicht zugänglich.',
+    );
+  }
+
   let injected: RawPage;
   try {
     const [result] = await chrome.scripting.executeScript({
@@ -44,9 +56,10 @@ export async function extractArticle(): Promise<Article> {
       func: grabPage,
     });
     injected = result.result as RawPage;
-  } catch {
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
     throw new ExtractionError(
-      'Diese Seite kann nicht gelesen werden (z. B. chrome:// oder Web Store).',
+      `Die Seite konnte nicht gelesen werden: ${detail}`,
     );
   }
 

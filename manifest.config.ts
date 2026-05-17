@@ -37,5 +37,9 @@ export default defineManifest({
     default_path: 'index.html',
   },
   permissions: ['sidePanel', 'storage', 'activeTab', 'scripting'],
-  host_permissions: [],
+  // Broad host access is required because the side panel extracts whatever
+  // tab is active *when the user presses the button*. `activeTab` only covers
+  // the tab that was focused at the moment the toolbar icon was clicked, so it
+  // breaks as soon as the user switches tabs with the panel open.
+  host_permissions: ['http://*/*', 'https://*/*'],
 });
