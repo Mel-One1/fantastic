@@ -22,15 +22,10 @@ async function createSession(
   if (status === 'unavailable') {
     throw new PromptUnavailableError('LanguageModel unavailable on this device');
   }
-  return LanguageModel!.create({
+
+  const base: LanguageModelCreateOptions = {
     initialPrompts: opts.system
       ? [{ role: 'system', content: opts.system }]
-      : undefined,
-    expectedInputs: opts.inputLanguages
-      ? [{ type: 'text', languages: opts.inputLanguages }]
-      : undefined,
-    expectedOutputs: opts.outputLanguages
-      ? [{ type: 'text', languages: opts.outputLanguages }]
       : undefined,
     signal: opts.signal,
     monitor: opts.onProgress
@@ -39,7 +34,32 @@ async function createSession(
             opts.onProgress!(e.loaded),
           )
       : undefined,
-  });
+  };
+
+  // Declaring expected input/output languages helps the model, but Gemini
+  // Nano only supports a small set of languages and rejects unknown ones with
+  // "The requested language options are not supported." If that happens, retry
+  // without the language hints — the model still follows the textual
+  // instruction to answer in the target language, just best-effort.
+  if (opts.inputLanguages || opts.outputLanguages) {
+    try {
+      return await LanguageModel!.create({
+        ...base,
+        expectedInputs: opts.inputLanguages
+          ? [{ type: 'text', languages: opts.inputLanguages }]
+          : undefined,
+        expectedOutputs: opts.outputLanguages
+          ? [{ type: 'text', languages: opts.outputLanguages }]
+          : undefined,
+      });
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      if (!/language/i.test(msg)) throw err;
+      // fall through to a session without language constraints
+    }
+  }
+
+  return LanguageModel!.create(base);
 }
 
 /**
