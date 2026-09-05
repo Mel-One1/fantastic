@@ -16,7 +16,17 @@ Order matters: back up first, then build, then delete.
 - [ ] `contacto@softdentalcare.com` checked. If the mailbox sits with the current host,
       the MX records must not be moved or deleted during the migration
 
-## 2. Content and legal
+## 2. Hostinger
+
+- [ ] `dist/` contents uploaded to `public_html`, `.htaccess` included
+- [ ] SSL certificate issued and https forced, verified on a fresh browser
+- [ ] Mailbox for `contacto@softdentalcare.com` located before the DNS change,
+      MX records left untouched if it stays with the current provider
+- [ ] Contact form endpoint decided and working, confirmation page counts as a
+      conversion event
+- [ ] Sample of old URLs tested against the live server, not only locally
+
+## 2b. Content and legal
 
 - [ ] Every item from `npm run todos` either filled in or consciously signed off
 - [ ] Second opinion wording reviewed by a lawyer

@@ -1,13 +1,13 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Prose from '../../components/Prose.astro';
-import Todo from '../../components/Todo.astro';
-import RelatedLinks from '../../components/RelatedLinks.astro';
-import { medicalProcedureSchema } from '../../lib/schema';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Prose from '../../../components/Prose.astro';
+import Todo from '../../../components/Todo.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import { medicalProcedureSchema } from '../../../lib/schema';
 
 const trail = [
   { name: 'Dental Implants', href: '/dental-implants/' },
-  { name: 'Single tooth implant', href: '/single-tooth-implant/' },
+  { name: 'Single tooth implant', href: '/dental-implants/single-tooth-implant/' },
 ];
 const title = 'Single Tooth Implant in Los Algodones | SoftDentalCare Los Algodones';
 const description =
@@ -27,5 +27,5 @@ const schema = [medicalProcedureSchema({ name: 'Single tooth dental implant' })]
     <h2>What decides the price</h2>
     <Todo needs="Price range and the factors that move it." />
   </Prose>
-  <RelatedLinks related={[{ href: '/dental-implants/', label: 'Dental implants overview' }, { href: '/bone-grafting/', label: 'When bone has to be built up first' }]} />
+  <RelatedLinks related={[{ href: '/dental-implants/', label: 'Dental implants overview' }, { href: '/dental-implants/bone-grafting/', label: 'When bone has to be built up first' }]} />
 </BaseLayout>

@@ -74,9 +74,9 @@ export const footerNav = [
     heading: 'Treatments',
     links: [
       { href: '/dental-implants/', label: 'Dental Implants' },
-      { href: '/single-tooth-implant/', label: 'Single Tooth Implant' },
-      { href: '/all-on-4/', label: 'All on 4' },
-      { href: '/bone-grafting/', label: 'Bone Grafting' },
+      { href: '/dental-implants/single-tooth-implant/', label: 'Single Tooth Implant' },
+      { href: '/dental-implants/all-on-4/', label: 'All on 4' },
+      { href: '/dental-implants/bone-grafting/', label: 'Bone Grafting' },
       { href: '/cosmetic-dentistry/', label: 'Cosmetic Dentistry' },
       { href: '/general-dentistry/', label: 'General Dentistry' },
     ],

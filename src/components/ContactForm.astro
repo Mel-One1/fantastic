@@ -2,8 +2,12 @@
 import Todo from './Todo.astro';
 /**
  * Spam protection without Google reCAPTCHA: honeypot field plus a rate limit
- * on the receiving endpoint. The endpoint itself depends on the hosting
- * decision and is not wired up yet.
+ * on the receiving endpoint.
+ *
+ * The endpoint is not built yet. Hostinger shared hosting has no serverless
+ * functions, so the form needs either a small isolated PHP handler on the
+ * server or an external form service. The briefing rules out PHP, so this
+ * needs a decision from Melanie before the form can go live.
  */
 ---
 
@@ -13,7 +17,7 @@ import Todo from './Todo.astro';
   class="grid gap-4 sm:grid-cols-2"
   data-todo="TODO-MELANIE"
 >
-  <Todo needs="Hosting decision pending, so the form endpoint (/api/contact) plus its rate limit is not wired up yet." />
+  <Todo needs="Decision needed on how the form is received on Hostinger: a small isolated PHP handler on the server, or an external form service that then belongs in the privacy policy. Until then the action below points nowhere." />
 
   <label class="grid gap-1 text-sm sm:col-span-1">
     <span class="font-medium">Your name</span>
