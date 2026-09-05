@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { medicalProcedureSchema } from '../../lib/schema';
+
+const trail = [{ name: 'Cosmetic Dentistry', href: '/cosmetic-dentistry/' }];
+const title = 'Cosmetic Dentistry in Los Algodones | SoftDentalCare Los Algodones';
+const description =
+  'Crowns, veneers and whitening in Los Algodones, Mexico. What each treatment involves, how long it takes on site and what the price depends on. Just ask us.';
+const schema = [medicalProcedureSchema({ name: 'Cosmetic dental treatment', bodyLocation: 'Mouth' })];
+---
+
+<BaseLayout title={title} description={description} trail={trail} schema={schema}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Cosmetic dentistry</h1>
+
+    <h2>Treatments offered</h2>
+    <Todo needs="Which cosmetic treatments are actually offered: crowns, veneers, whitening, others. Only list what the practice really does." />
+
+    <h2>Materials</h2>
+    <Todo needs="Materials used for crowns and veneers, and how they differ in price and durability." />
+
+    <h2>Before and after</h2>
+    <Todo needs="Before and after photos only with documented written patient consent. Without consent this section is dropped, not replaced by stock images." />
+  </Prose>
+  <RelatedLinks
+    related={[
+      { href: '/general-dentistry/', label: 'General dentistry' },
+      { href: '/dental-implants/', label: 'Dental implants' },
+    ]}
+  />
+</BaseLayout>

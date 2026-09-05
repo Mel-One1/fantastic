@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { medicalProcedureSchema } from '../../lib/schema';
+
+const trail = [
+  { name: 'Dental Implants', href: '/dental-implants/' },
+  { name: 'Single tooth implant', href: '/single-tooth-implant/' },
+];
+const title = 'Single Tooth Implant in Los Algodones | SoftDentalCare Los Algodones';
+const description =
+  'Replacing one missing tooth with an implant in Los Algodones, Mexico. The steps, the healing time, the number of trips and what the price depends on.';
+const schema = [medicalProcedureSchema({ name: 'Single tooth dental implant' })];
+---
+
+<BaseLayout title={title} description={description} trail={trail} schema={schema}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Single tooth implant</h1>
+    <h2>When a single implant is the option</h2>
+    <Todo needs="Indications, alternatives such as a bridge, and where the limits are. Written or approved by Dr. Garibay." />
+
+    <h2>Steps and time</h2>
+    <Todo needs="Step by step with realistic times, healing period, number of trips." />
+
+    <h2>What decides the price</h2>
+    <Todo needs="Price range and the factors that move it." />
+  </Prose>
+  <RelatedLinks related={[{ href: '/dental-implants/', label: 'Dental implants overview' }, { href: '/bone-grafting/', label: 'When bone has to be built up first' }]} />
+</BaseLayout>

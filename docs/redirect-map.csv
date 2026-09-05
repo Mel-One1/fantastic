@@ -1,0 +1,14 @@
+# Source of truth for the 301 map. One row per old URL, no exceptions.
+# Build it from three sources, because none of them is complete on its own:
+#   1. Full crawl of the live site (Screaming Frog or wget --spider --recursive)
+#   2. The WordPress sitemap (/wp-sitemap.xml or the plugin sitemap)
+#   3. Search Console export from Melanie: pages report over 16 months,
+#      plus the "Links to your site" report
+# Rule: every old URL gets a 301 to the closest matching new page.
+# A blanket redirect to the homepage is not allowed, Google treats it as a soft 404.
+# A URL with external backlinks takes priority and gets the closest content match.
+old_url,impressions,clicks,has_external_links,new_target,source,status
+http://softdentalcare.com/about,,,,/about/,briefing-footer-link,confirmed
+http://softdentalcare.com/our-work,,,,/reviews/,briefing-footer-link,needs-review
+http://softdentalcare.com/contact,,,,/contact/,briefing-footer-link,confirmed
+http://softdentalcare.com/privacy-policy-2/,,,,/privacy-policy/,briefing-footer-link,confirmed

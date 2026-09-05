@@ -1,0 +1,104 @@
+---
+import { footerNav, site, telLink, waLink } from '../data/site';
+import Todo from './Todo.astro';
+
+const dayLabel: Record<string, string> = {
+  Monday: 'Mon',
+  Tuesday: 'Tue',
+  Wednesday: 'Wed',
+  Thursday: 'Thu',
+  Friday: 'Fri',
+  Saturday: 'Sat',
+  Sunday: 'Sun',
+};
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-16 border-t border-line bg-sand">
+  <div class="mx-auto grid max-w-5xl gap-8 px-4 py-12 md:grid-cols-4">
+    <div>
+      <p class="font-semibold">{site.name}</p>
+      <address class="mt-2 text-sm not-italic text-ink-soft">
+        {
+          site.address.street ? (
+            <>
+              {site.address.street}
+              <br />
+              {site.address.postalCode} {site.address.locality}
+              <br />
+              {site.address.region}, Mexico
+            </>
+          ) : (
+            <Todo needs="Exact street address, character for character identical to the Google Business Profile." />
+          )
+        }
+      </address>
+
+      <p class="mt-3 text-sm">
+        {
+          telLink ? (
+            <a href={telLink} data-track="call" class="underline underline-offset-2">
+              {site.telephone}
+            </a>
+          ) : (
+            <Todo needs="Phone number for the footer." />
+          )
+        }
+      </p>
+      <p class="text-sm">
+        {
+          waLink ? (
+            <a href={waLink} data-track="whatsapp" rel="noopener" class="underline underline-offset-2">
+              WhatsApp
+            </a>
+          ) : (
+            <Todo needs="WhatsApp number for the footer link." />
+          )
+        }
+      </p>
+      <p class="text-sm">
+        <a href={`mailto:${site.email}`} class="underline underline-offset-2">{site.email}</a>
+      </p>
+
+      <div class="mt-4 text-sm text-ink-soft">
+        <p class="font-semibold text-ink">Opening hours</p>
+        {
+          site.openingHours.length ? (
+            <ul>
+              {site.openingHours.map((slot) => (
+                <li>
+                  {slot.days.map((d) => dayLabel[d] ?? d).join(', ')}: {slot.opens} to {slot.closes}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <Todo needs="Opening hours, identical to the Google Business Profile." />
+          )
+        }
+      </div>
+    </div>
+
+    {
+      footerNav.map((column) => (
+        <nav aria-label={column.heading}>
+          <p class="font-semibold">{column.heading}</p>
+          <ul class="mt-2 space-y-1 text-sm text-ink-soft">
+            {column.links.map((link) => (
+              <li>
+                <a href={link.href} class="underline-offset-2 hover:underline hover:text-accent">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))
+    }
+  </div>
+
+  <div class="border-t border-line">
+    <p class="mx-auto max-w-5xl px-4 py-4 text-xs text-ink-soft">
+      &copy; {year} {site.name}. {site.dentist}, Los Algodones, Baja California, Mexico.
+    </p>
+  </div>
+</footer>

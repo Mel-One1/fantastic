@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { medicalProcedureSchema } from '../../lib/schema';
+
+const trail = [{ name: 'General Dentistry', href: '/general-dentistry/' }];
+const title = 'General Dentistry in Los Algodones | SoftDentalCare Los Algodones';
+const description =
+  'Check ups, cleanings, fillings and extractions in Los Algodones, Mexico. What a first appointment covers and how to combine it with a trip from Yuma.';
+const schema = [medicalProcedureSchema({ name: 'General dental treatment', bodyLocation: 'Mouth' })];
+---
+
+<BaseLayout title={title} description={description} trail={trail} schema={schema}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">General dentistry</h1>
+
+    <h2>What we do</h2>
+    <Todo needs="List of general treatments actually offered: examinations, cleanings, fillings, root canals, extractions, dentures." />
+
+    <h2>Combining it with a trip</h2>
+    <p>
+      Most of our patients cross the border for the day. See
+      {' '}<a href="/planning-your-trip/">planning your trip</a> for parking, walking time and
+      documents.
+    </p>
+
+    <h2>Emergencies</h2>
+    <Todo needs="Whether same day emergency appointments are possible and how to reach the practice for one." />
+  </Prose>
+  <RelatedLinks
+    related={[
+      { href: '/cosmetic-dentistry/', label: 'Cosmetic dentistry' },
+      { href: '/dental-implants/', label: 'Dental implants' },
+    ]}
+  />
+</BaseLayout>

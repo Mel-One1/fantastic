@@ -1,0 +1,26 @@
+{
+  "name": "softdentalcare",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "todos": "grep -rn --include=*.astro --include=*.ts -E '<Todo |<PlaceholderImage |TODO-MELANIE|TODO-REAL-PHOTO' src | grep -v 'components/Todo.astro\\|components/PlaceholderImage.astro'",
+    "redirects:netlify": "node scripts/build-redirects.mjs netlify > public/_redirects",
+    "redirects:vercel": "node scripts/build-redirects.mjs vercel > vercel.json",
+    "redirects:htaccess": "node scripts/build-redirects.mjs htaccess > public/.htaccess"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^5.18.2",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^5.9.3"
+  }
+}

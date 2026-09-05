@@ -1,0 +1,32 @@
+---
+/**
+ * Internal linking block required by the briefing: every treatment page links
+ * to /prices/, /your-first-visit/ and at least one related treatment.
+ */
+interface Props {
+  related: { href: string; label: string }[];
+}
+const { related } = Astro.props;
+const links = [
+  { href: '/prices/', label: 'What treatment costs' },
+  { href: '/your-first-visit/', label: 'Your first visit, step by step' },
+  ...related,
+];
+---
+
+<nav aria-label="Related pages" class="border-t border-line bg-sand">
+  <div class="mx-auto max-w-3xl px-4 py-8">
+    <p class="font-semibold">Read next</p>
+    <ul class="mt-3 grid gap-2 sm:grid-cols-2">
+      {
+        links.map((link) => (
+          <li>
+            <a class="text-accent underline underline-offset-2" href={link.href}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>

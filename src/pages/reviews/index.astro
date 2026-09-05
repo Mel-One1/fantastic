@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { site } from '../../data/site';
+
+const trail = [{ name: 'Reviews', href: '/reviews/' }];
+const title = 'Patient Reviews | SoftDentalCare Los Algodones';
+const description =
+  'Reviews from patients treated in Los Algodones, shown with name and date straight from Google. No rewritten quotes and no stock photos of strangers.';
+---
+
+<BaseLayout title={title} description={description} trail={trail}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Patient reviews</h1>
+    <p>
+      Reviews are shown as they were written, with the name and the date from Google. We do not
+      write, shorten or reword them.
+    </p>
+
+    {
+      site.googlePlaceId ? (
+        <Todo needs="Place ID is set. Wire up the Google reviews fetch at build time and render name, date and rating." />
+      ) : (
+        <Todo needs="Google Place ID for the practice, so live reviews can be pulled in. Until then this page stays empty on purpose." />
+      )
+    }
+
+    <Todo needs="Decide whether an aggregateRating goes into the structured data. It is only allowed with the real Google rating and review count, entered in src/data/site.ts." />
+  </Prose>
+  <RelatedLinks
+    related={[
+      { href: '/about/', label: 'About the practice' },
+      { href: '/contact/', label: 'Contact' },
+    ]}
+  />
+</BaseLayout>

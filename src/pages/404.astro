@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Prose from '../components/Prose.astro';
+
+const title = 'Page Not Found | SoftDentalCare Los Algodones';
+const description =
+  'That page does not exist on this site. Use the links below to reach treatments, prices, planning your trip or the contact page for the practice.';
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">This page does not exist</h1>
+    <p>The page you were looking for is not here. These are the ones people ask for most.</p>
+    <ul>
+      <li><a href="/dental-implants/">Dental implants</a></li>
+      <li><a href="/prices/">Prices</a></li>
+      <li><a href="/your-first-visit/">Your first visit</a></li>
+      <li><a href="/planning-your-trip/">Planning your trip</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </Prose>
+</BaseLayout>

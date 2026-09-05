@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { faqPageSchema } from '../../lib/schema';
+
+const trail = [{ name: 'FAQ', href: '/faq/' }];
+const title = 'Frequently Asked Questions | SoftDentalCare Los Algodones';
+const description =
+  'Questions patients ask before crossing to Los Algodones: cost, number of trips, warranty, the border crossing, payment and what happens back home.';
+
+/**
+ * Questions are written in the words patients use. Answers are supplied by
+ * Melanie or Dr. Garibay. A question with `answer: null` renders as an open
+ * TODO and is left out of the FAQPage structured data.
+ */
+const faqs: { question: string; answer: string | null }[] = [
+  { question: 'How much does a dental implant cost in Los Algodones?', answer: null },
+  { question: 'How many trips do I need for implants?', answer: null },
+  { question: 'How long does the first appointment take?', answer: null },
+  { question: 'Will I speak with the dentist himself?', answer: null },
+  { question: 'Do you speak English?', answer: null },
+  { question: 'What documents do I need to cross the border?', answer: null },
+  { question: 'Where do I park on the US side?', answer: null },
+  { question: 'How long is the walk from the border to the practice?', answer: null },
+  { question: 'How long is the wait coming back into the United States?', answer: null },
+  { question: 'Can I pay by credit card?', answer: null },
+  { question: 'Do you take my US dental insurance?', answer: null },
+  { question: 'What warranty do I get on implants and crowns?', answer: null },
+  { question: 'What happens if something goes wrong once I am home in Arizona?', answer: null },
+  { question: 'Can you look at the treatment plan my US dentist gave me?', answer: null },
+  { question: 'What if I do not have enough bone for an implant?', answer: null },
+  { question: 'Can everything be done in one trip?', answer: null },
+  { question: 'Is it safe to have dental work done in Mexico?', answer: null },
+];
+
+const answered = faqs.filter((f): f is { question: string; answer: string } => Boolean(f.answer));
+const schema = [faqPageSchema(answered)].filter(Boolean);
+---
+
+<BaseLayout title={title} description={description} trail={trail} schema={schema}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Frequently asked questions</h1>
+    <p>
+      {answered.length} of {faqs.length} questions are answered so far. The rest are waiting on
+      confirmed information.
+    </p>
+
+    <dl>
+      {
+        faqs.map((faq) => (
+          <div class="border-b border-line py-4">
+            <dt class="font-semibold">{faq.question}</dt>
+            <dd class="mt-1">
+              {faq.answer ? (
+                <p>{faq.answer}</p>
+              ) : (
+                <Todo needs={`Answer for: ${faq.question}`} />
+              )}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </Prose>
+  <RelatedLinks
+    related={[
+      { href: '/aftercare-and-warranty/', label: 'Aftercare and warranty' },
+      { href: '/planning-your-trip/', label: 'Planning your trip' },
+    ]}
+  />
+</BaseLayout>

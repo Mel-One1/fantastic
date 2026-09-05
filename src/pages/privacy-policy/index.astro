@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+
+const trail = [{ name: 'Privacy Policy', href: '/privacy-policy/' }];
+const title = 'Privacy Policy | SoftDentalCare Los Algodones';
+const description =
+  'How SoftDentalCare handles the information you send us, including x-rays uploaded for a second opinion, how long it is kept and who has access to it.';
+---
+
+<BaseLayout title={title} description={description} trail={trail}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Privacy policy</h1>
+    <Todo needs="Full privacy policy, written new. It has to cover the contact form, the x-ray upload for second opinions (storage location, encryption, retention period, who can access the files) and any analytics that ends up being used. Legal review required before launch." />
+  </Prose>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { site } from '../../data/site';
+
+const trail = [{ name: 'About', href: '/about/' }];
+const title = 'About Dr. Garibay | SoftDentalCare Los Algodones';
+const description =
+  'Who treats you in Los Algodones. Dr. Mario A. Garibay, his training and the team, and why the practice keeps the number of daily appointments low.';
+---
+
+<BaseLayout title={title} description={description} trail={trail}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">About the practice</h1>
+
+    <h2>{site.dentist}</h2>
+    <PlaceholderImage subject={`Portrait of ${site.dentist}`} ratio="4 / 5" />
+    <Todo needs="Qualifications, training, memberships and continuing education, with dates. Nothing may be listed that cannot be documented." />
+
+    <h2>The team</h2>
+    <PlaceholderImage subject="The team in the practice" />
+    <Todo needs="Team members, roles and languages spoken. Real photo required, no stock portrait." />
+
+    <h2>The practice</h2>
+    <PlaceholderImage subject="Treatment room and waiting area" />
+    <Todo needs="Equipment actually in the practice. Do not claim equipment that belongs to another clinic." />
+
+    <h2>Why we keep the schedule short</h2>
+    <p>
+      Extensive work needs time for planning and for questions. See
+      {' '}<a href="/your-first-visit/">your first visit</a> for what that means in practice.
+    </p>
+  </Prose>
+  <RelatedLinks
+    related={[
+      { href: '/reviews/', label: 'What patients say' },
+      { href: '/contact/', label: 'Contact' },
+    ]}
+  />
+</BaseLayout>

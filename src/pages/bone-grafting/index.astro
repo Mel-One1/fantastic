@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { medicalProcedureSchema } from '../../lib/schema';
+
+const trail = [
+  { name: 'Dental Implants', href: '/dental-implants/' },
+  { name: 'Bone grafting', href: '/bone-grafting/' },
+];
+const title = 'Bone Grafting for Implants | SoftDentalCare Los Algodones';
+const description =
+  'Bone grafting before dental implants in Los Algodones, Mexico. Why it is needed, how long healing takes and what it adds to the treatment plan and cost.';
+const schema = [medicalProcedureSchema({ name: 'Dental bone graft' })];
+---
+
+<BaseLayout title={title} description={description} trail={trail} schema={schema}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Bone grafting</h1>
+    <h2>Why bone has to be built up</h2>
+    <Todo needs="Explanation of the situations that call for a graft, approved by Dr. Garibay." />
+
+    <h2>What it adds to your plan</h2>
+    <Todo needs="Extra healing time, extra trips, effect on the total price." />
+
+    <h2>Techniques used here</h2>
+    <Todo needs="Grafting techniques and materials actually used in the practice." />
+  </Prose>
+  <RelatedLinks related={[{ href: '/dental-implants/', label: 'Dental implants overview' }, { href: '/single-tooth-implant/', label: 'Single tooth implant' }]} />
+</BaseLayout>

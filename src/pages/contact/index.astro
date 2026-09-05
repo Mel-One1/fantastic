@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { site, telLink, waLink } from '../../data/site';
+
+const trail = [{ name: 'Contact', href: '/contact/' }];
+const title = 'Contact and Opening Hours | SoftDentalCare Los Algodones';
+const description =
+  'Reach the practice in Los Algodones by phone, WhatsApp or the form below. Address, opening hours and how to find us after crossing the border.';
+---
+
+<BaseLayout title={title} description={description} trail={trail}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Contact</h1>
+
+    <h2>Talk to us directly</h2>
+    <ul>
+      {telLink ? <li><a data-track="call" href={telLink}>{site.telephone}</a></li> : <li><Todo needs="Phone number." /></li>}
+      {waLink ? <li><a data-track="whatsapp" rel="noopener" href={waLink}>WhatsApp</a></li> : <li><Todo needs="WhatsApp number." /></li>}
+      <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+    </ul>
+
+    <h2>Send us your question</h2>
+    <ContactForm />
+
+    <h2>Where to find us</h2>
+    <Todo needs="Exact address and opening hours, character for character identical to the Google Business Profile. Enter them in src/data/site.ts, they then appear in the footer and in the structured data as well." />
+    <Todo needs="Map section. Embed without third party tracking, for example a static image plus a link to the map service." />
+  </Prose>
+</BaseLayout>

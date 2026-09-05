@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { medicalProcedureSchema } from '../../lib/schema';
+
+const trail = [{ name: 'Dental Implants', href: '/dental-implants/' }];
+const title = 'Dental Implants in Los Algodones | SoftDentalCare Los Algodones';
+const description =
+  'Dental implants in Los Algodones, Mexico. How the treatment works, how many trips it takes and what decides the price. Send us your case for a look.';
+const schema = [medicalProcedureSchema({ name: 'Dental implant placement' })];
+---
+
+<BaseLayout title={title} description={description} trail={trail} schema={schema}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Dental implants</h1>
+    <p>
+      This page is the overview. The pages below go into the individual situations in detail.
+    </p>
+
+    <h2>Is an implant the right answer for you?</h2>
+    <Todo needs="Indications and limits in plain language, written or approved by Dr. Garibay. No success rates without a cited source." />
+
+    <h2>How the treatment runs</h2>
+    <Todo needs="Chronological steps with realistic time per step, number of trips, healing time before the final crown." />
+
+    <h2>Implant systems we use</h2>
+    <Todo needs="List of implant systems and materials actually in use. Nothing may be listed that is not used." />
+
+    <h2>The situations we treat</h2>
+    <ul>
+      <li><a href="/single-tooth-implant/">Single tooth implant</a></li>
+      <li><a href="/all-on-4/">All on 4, a full arch on four implants</a></li>
+      <li><a href="/bone-grafting/">Bone grafting, when there is not enough bone</a></li>
+    </ul>
+
+    <h2>What it costs</h2>
+    <p>
+      The price depends on the implant system, on whether bone has to be built up first and on how
+      many trips your case needs. See <a href="/prices/">price ranges</a> for the details.
+    </p>
+  </Prose>
+  <RelatedLinks
+    related={[
+      { href: '/all-on-4/', label: 'All on 4, full arch treatment' },
+      { href: '/aftercare-and-warranty/', label: 'What happens if there is a problem at home' },
+    ]}
+  />
+</BaseLayout>

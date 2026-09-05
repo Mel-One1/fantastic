@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { site } from '../../data/site';
+
+const trail = [{ name: 'Second Opinion', href: '/second-opinion/' }];
+const title = 'Second Opinion on a Dental Treatment Plan | SoftDentalCare Los Algodones';
+const description =
+  'Send us the treatment plan and x-rays you received in the United States. We tell you what we would do, what it would cost here and how long it takes.';
+---
+
+<BaseLayout title={title} description={description} trail={trail}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Second opinion on your treatment plan</h1>
+
+    <p class="border-l-4 border-accent bg-sand px-4 py-3">
+      This is an offer from {site.name}. It is not an independent review board and we do not present
+      it as one. We tell you what we would do and what it would cost with us.
+    </p>
+
+    <h2>How it works</h2>
+    <ol>
+      <li>You send us the written estimate and the x-rays you received in the United States.</li>
+      <li>{site.dentist} looks at the case.</li>
+      <li>You get our reading of what is needed, what it costs here and how many days on site it takes.</li>
+    </ol>
+    <Todo needs="How long the reply takes, whether the review is free, and who exactly reviews the case." />
+
+    <h2>Sending your files</h2>
+    <Todo needs="Upload route is not built yet. It depends on the hosting decision and needs encryption in transit and at rest, plus a stated retention period." />
+
+    <h2>The legal part</h2>
+    <Todo needs="Wording must be checked by a lawyer before publication: a remote assessment is not a diagnosis and does not create a treatment relationship. Do not publish this page before that check is done." />
+  </Prose>
+  <RelatedLinks
+    related={[
+      { href: '/prices/', label: 'Price ranges' },
+      { href: '/dental-implants/', label: 'Dental implants' },
+    ]}
+  />
+</BaseLayout>

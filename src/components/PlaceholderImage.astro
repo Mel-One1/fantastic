@@ -1,0 +1,24 @@
+---
+/**
+ * Stands in for a real photograph of the practice, the team or Dr. Garibay.
+ * Stock portraits are not allowed here (briefing section 5), so this box is
+ * rendered instead until the real picture exists.
+ */
+interface Props {
+  subject: string;
+  ratio?: string;
+}
+const { subject, ratio = '3 / 2' } = Astro.props;
+---
+
+<figure
+  class="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-amber-500 bg-amber-50 p-6 text-center"
+  style={`aspect-ratio: ${ratio}`}
+  data-todo="TODO-REAL-PHOTO"
+>
+  <span class="text-xs font-semibold tracking-widest text-amber-700">TODO-REAL-PHOTO</span>
+  <figcaption class="text-sm text-amber-950">{subject}</figcaption>
+  <span class="max-w-xs text-xs text-amber-800">
+    Real photograph required. No stock portrait may be used in this slot.
+  </span>
+</figure>

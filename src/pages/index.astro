@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Todo from '../components/Todo.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import { site, telLink, waLink } from '../data/site';
+
+const title = 'Dental Implants in Los Algodones | SoftDentalCare Los Algodones';
+const description =
+  'Dental implants and full mouth restoration in Los Algodones, Mexico. We see few patients a day, so your treatment gets real time. Ask us about your case.';
+
+const treatments = [
+  { href: '/dental-implants/', label: 'Dental implants', note: 'Single teeth, All on 4, bone grafting' },
+  { href: '/cosmetic-dentistry/', label: 'Cosmetic dentistry', note: 'Crowns, veneers, whitening' },
+  { href: '/general-dentistry/', label: 'General dentistry', note: 'Check ups, fillings, cleanings' },
+  { href: '/second-opinion/', label: 'Second opinion', note: 'Have your US treatment plan reviewed' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  {/* 1. Hero. The UVP has to be readable above the fold. */}
+  <section class="border-b border-line bg-sand">
+    <div class="mx-auto max-w-5xl px-4 py-16">
+      <h1 class="max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">
+        Implant dentistry in Los Algodones, with time for your case
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg text-ink-soft">
+        We take a limited number of patients per day. That is the whole idea. You talk to
+        {' '}{site.dentist} himself, before, during and after treatment.
+      </p>
+      <Todo needs="Exact figures for the headline promise: how many patients per day, how long the first consultation takes. The sentence above stays generic until those numbers are confirmed." />
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/contact/" class="bg-accent px-5 py-3 font-semibold text-white hover:bg-accent-dark">
+          Ask about your case
+        </a>
+        <a href="/prices/" class="border border-ink px-5 py-3 font-semibold hover:bg-paper">
+          See price ranges
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* 2. Trust anchors. Substance only, no filler phrases. */}
+  <section class="mx-auto max-w-5xl px-4 py-12">
+    <h2 class="text-2xl font-semibold">Why patients from Arizona and California come here</h2>
+    <Todo needs="Three to four trust anchors with substance: years in practice, Loma Linda training details, implant systems in use, memberships. Nothing here may be written before the facts are confirmed." />
+  </section>
+
+  {/* 3. The time proof, the core of the positioning. */}
+  <section class="border-y border-line bg-sand">
+    <div class="mx-auto max-w-5xl px-4 py-12">
+      <h2 class="text-2xl font-semibold">Few appointments a day, on purpose</h2>
+      <p class="mt-3 max-w-2xl text-ink-soft">
+        Extensive work needs planning, checking and time to answer questions. A full schedule makes
+        that impossible, so we do not run one.
+      </p>
+      <Todo needs="Confirmed numbers: appointments per day, length of the first consultation, who does the follow up calls." />
+      <a class="mt-4 inline-block text-accent underline underline-offset-2" href="/your-first-visit/">
+        What happens at your first visit
+      </a>
+    </div>
+  </section>
+
+  {/* 4. Treatment focus, each tile links deep. */}
+  <section class="mx-auto max-w-5xl px-4 py-12">
+    <h2 class="text-2xl font-semibold">Treatments</h2>
+    <ul class="mt-6 grid gap-4 sm:grid-cols-2">
+      {
+        treatments.map((item) => (
+          <li class="border border-line p-5">
+            <a class="text-lg font-semibold text-accent underline underline-offset-2" href={item.href}>
+              {item.label}
+            </a>
+            <p class="mt-1 text-sm text-ink-soft">{item.note}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  {/* 5. Patient voices with name and home state, pulled from Google Reviews. */}
+  <section class="border-y border-line bg-sand">
+    <div class="mx-auto max-w-5xl px-4 py-12">
+      <h2 class="text-2xl font-semibold">What patients say</h2>
+      <Todo needs="Google Place ID so real reviews can be embedded with name and date. Quotes are never written or reworded by us." />
+      <a class="mt-2 inline-block text-accent underline underline-offset-2" href="/reviews/">
+        Read all reviews
+      </a>
+    </div>
+  </section>
+
+  {/* 6. Price transparency teaser. */}
+  <section class="mx-auto max-w-5xl px-4 py-12">
+    <h2 class="text-2xl font-semibold">What it costs</h2>
+    <p class="mt-3 max-w-2xl text-ink-soft">
+      A binding price follows the examination and the 3D scan. Before that we can give you the range
+      your case is likely to fall into, and tell you what moves it up or down.
+    </p>
+    <Todo needs="Decision on price display (ranges, fixed prices or none) and the actual figures." />
+    <a class="mt-4 inline-block text-accent underline underline-offset-2" href="/prices/">
+      Price ranges and what changes them
+    </a>
+  </section>
+
+  {/* 7. Getting here and the border situation. */}
+  <section class="border-y border-line bg-sand">
+    <div class="mx-auto max-w-5xl px-4 py-12 md:grid md:grid-cols-2 md:gap-8">
+      <div>
+        <h2 class="text-2xl font-semibold">Getting here from Yuma</h2>
+        <p class="mt-3 text-ink-soft">
+          Park on the US side in Andrade, walk across the border and reach the practice on foot.
+        </p>
+        <Todo needs="Walking time from the border crossing, typical wait when returning to the US, parking costs in Andrade." />
+        <a class="mt-4 inline-block text-accent underline underline-offset-2" href="/planning-your-trip/">
+          Planning your trip
+        </a>
+      </div>
+      <div class="mt-6 md:mt-0">
+        <PlaceholderImage subject="Practice entrance and street view" />
+      </div>
+    </div>
+  </section>
+
+  {/* 8. Contact block. */}
+  <section class="mx-auto max-w-5xl px-4 py-12">
+    <h2 class="text-2xl font-semibold">Talk to us</h2>
+    <ul class="mt-4 space-y-2">
+      {telLink && <li><a class="text-accent underline underline-offset-2" data-track="call" href={telLink}>{site.telephone}</a></li>}
+      {waLink && <li><a class="text-accent underline underline-offset-2" data-track="whatsapp" rel="noopener" href={waLink}>WhatsApp</a></li>}
+      <li><a class="text-accent underline underline-offset-2" href={`mailto:${site.email}`}>{site.email}</a></li>
+      <li><a class="text-accent underline underline-offset-2" href="/contact/">Contact form, opening hours and address</a></li>
+    </ul>
+  </section>
+</BaseLayout>

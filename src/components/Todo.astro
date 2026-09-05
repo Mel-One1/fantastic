@@ -1,0 +1,24 @@
+---
+/**
+ * Visible placeholder for content that Melanie still has to supply.
+ * The briefing requires open items to stay visible in the build instead of
+ * being filled with invented numbers or claims.
+ */
+interface Props {
+  /** What exactly is missing. */
+  needs: string;
+  /** "photo" marks a missing real photograph (TODO-REAL-PHOTO). */
+  kind?: 'content' | 'photo';
+}
+const { needs, kind = 'content' } = Astro.props;
+const marker = kind === 'photo' ? 'TODO-REAL-PHOTO' : 'TODO-MELANIE';
+---
+
+<div
+  role="note"
+  class="my-4 border-l-4 border-amber-500 bg-amber-50 px-4 py-3 text-sm text-amber-950"
+  data-todo={marker}
+>
+  <strong class="font-semibold tracking-wide">{marker}</strong>
+  <span class="block">{needs}</span>
+</div>

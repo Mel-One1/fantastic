@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+
+const trail = [{ name: 'Planning Your Trip', href: '/planning-your-trip/' }];
+const title = 'Dental Work in Mexico from Yuma | SoftDentalCare Los Algodones';
+const description =
+  'Crossing to Los Algodones from Yuma: where to park in Andrade, the walk to the practice, documents, wait times coming back and where to stay overnight.';
+---
+
+<BaseLayout title={title} description={description} trail={trail}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Planning your trip</h1>
+    <p>
+      Most patients park on the US side in Andrade, walk across the border and come to us on foot.
+    </p>
+
+    <h2>Parking and the walk</h2>
+    <Todo needs="Parking options and cost in Andrade, walking time to the practice in minutes, and whether the route is manageable with limited mobility." />
+
+    <h2>Documents you need</h2>
+    <Todo needs="Which documents US and Canadian citizens need for the crossing, checked against the current rules before publication." />
+
+    <h2>Coming back into the United States</h2>
+    <Todo needs="Typical wait times at the crossing and the times of day worth avoiding. Give a range, not a promise." />
+
+    <h2>Paying</h2>
+    <Todo needs="Accepted payment methods and currency, identical to the statement on the prices page." />
+
+    <h2>Languages and accessibility</h2>
+    <Todo needs="Languages spoken by the team, and accessibility of the practice: steps, elevator, wheelchair access." />
+
+    <h2>Staying overnight in Yuma</h2>
+    <Todo needs="Whether to recommend accommodation, and if so which. No paid placements without disclosure." />
+
+    <PlaceholderImage subject="Street view of the practice and the way there from the border" />
+  </Prose>
+  <RelatedLinks
+    related={[
+      { href: '/your-first-visit/', label: 'What happens at your first visit' },
+      { href: '/contact/', label: 'Opening hours and address' },
+    ]}
+  />
+</BaseLayout>

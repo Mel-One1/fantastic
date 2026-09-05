@@ -1,0 +1,63 @@
+---
+import Todo from './Todo.astro';
+/**
+ * Spam protection without Google reCAPTCHA: honeypot field plus a rate limit
+ * on the receiving endpoint. The endpoint itself depends on the hosting
+ * decision and is not wired up yet.
+ */
+---
+
+<form
+  method="post"
+  action="/api/contact"
+  class="grid gap-4 sm:grid-cols-2"
+  data-todo="TODO-MELANIE"
+>
+  <Todo needs="Hosting decision pending, so the form endpoint (/api/contact) plus its rate limit is not wired up yet." />
+
+  <label class="grid gap-1 text-sm sm:col-span-1">
+    <span class="font-medium">Your name</span>
+    <input name="name" type="text" required autocomplete="name" class="border border-line px-3 py-2" />
+  </label>
+
+  <label class="grid gap-1 text-sm sm:col-span-1">
+    <span class="font-medium">Email</span>
+    <input name="email" type="email" required autocomplete="email" class="border border-line px-3 py-2" />
+  </label>
+
+  <label class="grid gap-1 text-sm sm:col-span-1">
+    <span class="font-medium">Phone (optional)</span>
+    <input name="phone" type="tel" autocomplete="tel" class="border border-line px-3 py-2" />
+  </label>
+
+  <label class="grid gap-1 text-sm sm:col-span-1">
+    <span class="font-medium">Where do you live?</span>
+    <input name="location" type="text" class="border border-line px-3 py-2" />
+  </label>
+
+  <label class="grid gap-1 text-sm sm:col-span-2">
+    <span class="font-medium">What do you need?</span>
+    <textarea name="message" rows="5" required class="border border-line px-3 py-2"></textarea>
+  </label>
+
+  <!-- Honeypot. Hidden from people, filled in by most bots. -->
+  <div class="hidden" aria-hidden="true">
+    <label>
+      Leave this field empty
+      <input name="company" type="text" tabindex="-1" autocomplete="off" />
+    </label>
+  </div>
+
+  <div class="sm:col-span-2">
+    <button
+      type="submit"
+      class="bg-accent px-5 py-3 font-semibold text-white hover:bg-accent-dark"
+    >
+      Send your question
+    </button>
+    <p class="mt-2 text-xs text-ink-soft">
+      We answer in English. See our <a class="underline" href="/privacy-policy/">privacy policy</a>
+      for how your message is handled.
+    </p>
+  </div>
+</form>

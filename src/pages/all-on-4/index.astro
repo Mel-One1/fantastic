@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { medicalProcedureSchema } from '../../lib/schema';
+
+const trail = [
+  { name: 'Dental Implants', href: '/dental-implants/' },
+  { name: 'All on 4', href: '/all-on-4/' },
+];
+const title = 'All on 4 in Mexico | SoftDentalCare Los Algodones';
+const description =
+  'All on 4 in Los Algodones, Mexico. A full arch on four implants: how it works, how many trips it takes and what the total treatment is likely to cost.';
+const schema = [medicalProcedureSchema({ name: 'All on 4 implant supported full arch restoration' })];
+---
+
+<BaseLayout title={title} description={description} trail={trail} schema={schema}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">All on 4</h1>
+    <h2>What All on 4 means</h2>
+    <Todo needs="Plain language description, who it suits and who it does not. Approved by Dr. Garibay." />
+
+    <h2>Trips and time on site</h2>
+    <Todo needs="How many trips, how many days per trip, how long between the temporary and the final bridge." />
+
+    <h2>Materials and what they change</h2>
+    <Todo needs="Which bridge materials are offered and how they affect price and durability." />
+  </Prose>
+  <RelatedLinks related={[{ href: '/dental-implants/', label: 'Dental implants overview' }, { href: '/bone-grafting/', label: 'Bone grafting' }]} />
+</BaseLayout>

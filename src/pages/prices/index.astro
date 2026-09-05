@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+
+const trail = [{ name: 'Prices', href: '/prices/' }];
+const title = 'Dental Implant Prices in Mexico | SoftDentalCare Los Algodones';
+const description =
+  'What dental treatment costs in Los Algodones, Mexico. Price ranges, what moves a price up or down, and why the binding figure follows your examination.';
+
+/**
+ * Filled in by Melanie only. Never take figures from comparison portals and
+ * never estimate. Each entry: { treatment, from, to, currency, note }.
+ */
+const priceRanges: { treatment: string; from: number; to: number; currency: string; note?: string }[] = [];
+---
+
+<BaseLayout title={title} description={description} trail={trail}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Prices</h1>
+    <p>
+      A binding price comes after the examination and the 3D scan. What we can tell you beforehand
+      is the range your case is likely to fall into, and what decides where in that range it lands.
+    </p>
+
+    <h2>Price ranges</h2>
+    {
+      priceRanges.length ? (
+        <table class="w-full border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-line">
+              <th class="py-2">Treatment</th>
+              <th class="py-2">Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            {priceRanges.map((row) => (
+              <tr class="border-b border-line">
+                <td class="py-2">
+                  {row.treatment}
+                  {row.note && <span class="block text-xs text-ink-soft">{row.note}</span>}
+                </td>
+                <td class="py-2">
+                  {row.currency} {row.from} to {row.currency} {row.to}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <Todo needs="Decision on price display (ranges, fixed prices or none) plus the actual figures for the main treatments. Enter them in the priceRanges array on this page. No figure may be invented or copied from a comparison portal." />
+      )
+    }
+
+    <h2>What moves the price</h2>
+    <ul>
+      <li>Whether bone has to be built up before the implant goes in</li>
+      <li>Which implant system and which materials your case calls for</li>
+      <li>How many teeth are treated and how many trips that takes</li>
+    </ul>
+    <Todo needs="Confirmation that this list matches how pricing actually works in the practice, plus anything missing from it." />
+
+    <h2>Compared to prices in the United States</h2>
+    <Todo needs="A comparison may only be published with a named source and the year of that source. Without a source this section is dropped." />
+
+    <h2>Paying for your treatment</h2>
+    <Todo needs="Accepted payment methods, whether cards are taken, whether a deposit is required, currency." />
+  </Prose>
+  <RelatedLinks
+    related={[
+      { href: '/dental-implants/', label: 'Dental implants' },
+      { href: '/second-opinion/', label: 'Have your US treatment plan reviewed' },
+    ]}
+  />
+</BaseLayout>

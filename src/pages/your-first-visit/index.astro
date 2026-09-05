@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+import Todo from '../../components/Todo.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { site } from '../../data/site';
+
+const trail = [{ name: 'Your First Visit', href: '/your-first-visit/' }];
+const title = 'Your First Visit | SoftDentalCare Los Algodones';
+const description =
+  'What happens at your first appointment in Los Algodones: examination, 3D scan, treatment plan and time for questions. How long each step really takes.';
+---
+
+<BaseLayout title={title} description={description} trail={trail}>
+  <Prose>
+    <h1 class="text-3xl font-semibold">Your first visit</h1>
+    <p>
+      We keep the schedule short so that a first appointment can take as long as it needs to. You
+      speak with {site.dentist} himself, not only with an assistant.
+    </p>
+    <Todo needs="The core sentence of the whole website in confirmed numbers: how many patients per day, how long the first consultation lasts, who conducts it." />
+
+    <h2>Step by step</h2>
+    <Todo needs="Chronological run through with realistic times: arrival, examination, 3D scan, discussion, written plan. When is the plan ready, same day or later?" />
+
+    <h2>How many trips your treatment takes</h2>
+    <Todo needs="Typical number of trips and days on site per treatment type, so patients can plan travel and accommodation." />
+
+    <h2>What to bring</h2>
+    <Todo needs="Documents, existing x-rays, medication list, anything else useful." />
+  </Prose>
+  <RelatedLinks
+    related={[
+      { href: '/planning-your-trip/', label: 'Planning your trip' },
+      { href: '/dental-implants/', label: 'Dental implants' },
+    ]}
+  />
+</BaseLayout>
