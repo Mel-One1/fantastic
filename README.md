@@ -61,6 +61,10 @@ MX records must not be moved or deleted.
   `PlaceholderImage` with a `TODO-REAL-PHOTO` marker until real photos exist.
 - No dashes in body copy, and no advertising tone. The audience is 55 plus and skeptical.
 - No resource may be loaded from another domain, `seconddentalopinion.net` included.
+- `seconddentalopinion.net` is a separate project with a neutral positioning. This site
+  neither links to it nor borrows its framing. The `/second-opinion/` page here is an
+  SDC offer and has to read as one: we treat the patients we advise, so the page says
+  outright that the opinion is ours and not a neutral assessment.
 
 ## Decided
 

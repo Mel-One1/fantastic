@@ -8,30 +8,40 @@ import { site } from '../../data/site';
 const trail = [{ name: 'Second Opinion', href: '/second-opinion/' }];
 const title = 'Second Opinion on a Dental Treatment Plan | SoftDentalCare Los Algodones';
 const description =
-  'Send us the treatment plan and x-rays you received in the United States. We tell you what we would do, what it would cost here and how long it takes.';
+  'Dr. Garibay reviews the treatment plan and x-rays you were given in the United States and tells you what he would do, what it costs and how long it takes.';
 ---
 
 <BaseLayout title={title} description={description} trail={trail}>
   <Prose>
-    <h1 class="text-3xl font-semibold">Second opinion on your treatment plan</h1>
+    <h1 class="text-3xl font-semibold">A second opinion from {site.dentist}</h1>
 
     <p class="border-l-4 border-accent bg-sand px-4 py-3">
-      This is an offer from {site.name}. It is not an independent review board and we do not present
-      it as one. We tell you what we would do and what it would cost with us.
+      <strong>This is our own opinion, not a neutral assessment.</strong> {site.name} is the practice
+      that would carry out the treatment, so we have an interest in the answer. We are not a review
+      board, an insurer or an independent service, and we do not present ourselves as one. What you
+      get here is what {site.dentist} would do in your case and what it would cost with us.
     </p>
 
     <h2>How it works</h2>
     <ol>
       <li>You send us the written estimate and the x-rays you received in the United States.</li>
-      <li>{site.dentist} looks at the case.</li>
-      <li>You get our reading of what is needed, what it costs here and how many days on site it takes.</li>
+      <li>{site.dentist} looks at the case himself.</li>
+      <li>
+        You get his reading of what is needed, what it costs at {site.name} and how many days on
+        site it takes.
+      </li>
     </ol>
+    <p>
+      If you would rather have someone look at your plan who does not treat you, ask for an opinion
+      somewhere that has no stake in it. That is a fair thing to want and we will say so.
+    </p>
     <Todo needs="How long the reply takes, whether the review is free, and who exactly reviews the case." />
 
     <h2>Sending your files</h2>
     <Todo needs="Upload route is not built yet. It runs as a PHP handler on Hostinger and stores files outside the web root, never in public_html. Retention period and who may access the files still have to be set, and both belong in the privacy policy." />
 
     <h2>The legal part</h2>
+    <Todo needs="Legal check should also confirm the wording that identifies this as an SDC offer rather than a neutral assessment, since we do treat the patients we advise." />
     <Todo needs="Wording must be checked by a lawyer before publication: a remote assessment is not a diagnosis and does not create a treatment relationship. Do not publish this page before that check is done." />
   </Prose>
   <RelatedLinks
