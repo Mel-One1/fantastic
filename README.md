@@ -62,15 +62,19 @@ MX records must not be moved or deleted.
 - No dashes in body copy, and no advertising tone. The audience is 55 plus and skeptical.
 - No resource may be loaded from another domain, `seconddentalopinion.net` included.
 
+## Decided
+
+- Hosting: Hostinger. PHP is allowed for the contact form and for the x ray upload,
+  both of which run on the same server. Uploaded files are stored outside the web
+  root, never inside `public_html`
+- Prices are shown as ranges, not fixed prices
+- Photos: some exist already, a shoot can be arranged for what is missing
+
 ## Still open
 
-- How the contact form is received. Hostinger shared hosting has no serverless
-  functions, and the briefing rules out PHP. It is either a small isolated PHP
-  handler on the server or an external form service, which then has to appear in
-  the privacy policy. The same question decides the encrypted x-ray upload on
-  `/second-opinion/`, which additionally needs storage outside the web root
-- Price display: ranges, fixed prices or none
-- Photo shoot yes or no
+- Search Console: the pages report over 16 months and the "Links to your site"
+  report. See `docs/gsc/README.md`. The 3 month export is in, the map in
+  `docs/redirect-map.csv` is built from it but is not complete yet
 - Self hosted web fonts. Until the font files are in `public/fonts/` with
   `font-display: swap`, the site falls back to the system font stack. No font may be
   loaded from a third party domain.

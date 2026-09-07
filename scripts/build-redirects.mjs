@@ -69,9 +69,9 @@ if (format === 'netlify') {
   // A row whose only difference is the trailing slash is left to the generic
   // rule further down. Writing it out here would make the pattern match its
   // own target and loop.
-  const slashOnly = rows.filter((r) => trimmed(r.from) === trimmed(r.to));
+  const slashOnly = rows.filter((r) => r.from !== r.to && trimmed(r.from) === trimmed(r.to));
   const rules = rows
-    .filter((r) => trimmed(r.from) !== trimmed(r.to))
+    .filter((r) => r.from !== r.to && trimmed(r.from) !== trimmed(r.to))
     .map((r) => `  RewriteRule "^${escape(trimmed(r.from).replace(/^\//, ''))}/?$" "${r.to}" [R=301,L]`);
 
   if (slashOnly.length) {

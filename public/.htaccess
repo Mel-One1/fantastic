@@ -19,6 +19,12 @@ ErrorDocument 404 /404.html
   RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
   # 301 map, generated from docs/redirect-map.csv.
+  RewriteRule "^index\.php/contact/?$" "/contact/" [R=301,L]
+  RewriteRule "^index\.php/about/?$" "/about/" [R=301,L]
+  RewriteRule "^index\.php/our-work-2/?$" "/reviews/" [R=301,L]
+  RewriteRule "^index\.php/single-tooth-implant/?$" "/dental-implants/single-tooth-implant/" [R=301,L]
+  RewriteRule "^index\.php/bonegraft/?$" "/dental-implants/bone-grafting/" [R=301,L]
+  RewriteRule "^index\.php/dentalimplants/?$" "/dental-implants/" [R=301,L]
   RewriteRule "^our-work/?$" "/reviews/" [R=301,L]
   RewriteRule "^privacy-policy-2/?$" "/privacy-policy/" [R=301,L]
   # 2 further old URL(s) differ only by the trailing slash
