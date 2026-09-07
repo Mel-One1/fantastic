@@ -27,6 +27,8 @@ no WordPress, no database.
   real Google rating has been entered.
 - `docs/redirect-map.csv` is the source of truth for the 301 map.
 - `docs/pre-launch.md` is the checklist that has to be done before the old site is deleted.
+- `docs/handover.md` is the project handover: state, decisions, open items, next steps.
+  Read it first when picking this up in a new session.
 
 ## Deployment on Hostinger
 
