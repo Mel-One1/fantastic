@@ -72,9 +72,10 @@ MX records must not be moved or deleted.
 
 ## Still open
 
-- Search Console: the pages report over 16 months and the "Links to your site"
-  report. See `docs/gsc/README.md`. The 3 month export is in, the map in
-  `docs/redirect-map.csv` is built from it but is not complete yet
+- The "Top linked pages" half of the links report, plus a crawl of the live site
+  and the WordPress sitemap. See `docs/gsc/README.md`. The 16 month pages report
+  is in and `docs/redirect-map.csv` is built from it, but URLs with zero
+  impressions can only come from the crawl
 - Self hosted web fonts. Until the font files are in `public/fonts/` with
   `font-display: swap`, the site falls back to the system font stack. No font may be
   loaded from a third party domain.

@@ -1,23 +1,23 @@
 # Source of truth for the 301 map. One row per old URL, no exceptions.
-# Build it from three sources, because none of them is complete on its own:
-#   1. Full crawl of the live site (Screaming Frog or wget --spider --recursive)
-#   2. The WordPress sitemap (/wp-sitemap.xml or the plugin sitemap)
-#   3. Search Console exports, see docs/gsc/
+# Impressions and clicks are from the 16 month Search Console export in docs/gsc/.
 # Rule: every old URL gets a 301 to the closest matching new page.
 # A blanket redirect to the homepage is not allowed, Google treats it as a soft 404.
 # A URL with external backlinks takes priority and gets the closest content match.
 #
-# Impressions and clicks below are from the 3 month export in docs/gsc/. The
-# 16 month export and the "Links to your site" report are still outstanding, so
-# has_external_links is unknown on every row and the list is not yet complete.
+# Still missing before this list is complete: a full crawl of the live site and the
+# WordPress sitemap. Pages with zero impressions never show up in Search Console.
 old_url,impressions,clicks,has_external_links,new_target,source,status
-https://softdentalcare.com/,2346,62,unknown,/,gsc-pages-3m,confirmed
-https://softdentalcare.com/index.php/contact/,393,3,unknown,/contact/,gsc-pages-3m,confirmed
-https://softdentalcare.com/index.php/about/,339,6,unknown,/about/,gsc-pages-3m,confirmed
-https://softdentalcare.com/index.php/our-work-2/,203,1,unknown,/reviews/,gsc-pages-3m,needs-review
-https://softdentalcare.com/index.php/single-tooth-implant/,201,0,unknown,/dental-implants/single-tooth-implant/,gsc-pages-3m,confirmed
-https://softdentalcare.com/index.php/bonegraft/,149,0,unknown,/dental-implants/bone-grafting/,gsc-pages-3m,confirmed
-https://softdentalcare.com/index.php/dentalimplants/,148,0,unknown,/dental-implants/,gsc-pages-3m,confirmed
+https://softdentalcare.com/,12645,130,unknown,/,gsc-pages-16m,confirmed
+https://softdentalcare.com/index.php/single-tooth-implant/,982,0,unknown,/dental-implants/single-tooth-implant/,gsc-pages-16m,confirmed
+https://softdentalcare.com/index.php/bonegraft/,948,0,unknown,/dental-implants/bone-grafting/,gsc-pages-16m,confirmed
+https://softdentalcare.com/index.php/contact/,894,4,unknown,/contact/,gsc-pages-16m,confirmed
+https://softdentalcare.com/index.php/about/,863,10,unknown,/about/,gsc-pages-16m,confirmed
+https://softdentalcare.com/index.php/our-work-2/,555,1,unknown,/reviews/,gsc-pages-16m,needs-review
+https://softdentalcare.com/index.php/dentalimplants/,362,0,unknown,/dental-implants/,gsc-pages-16m,confirmed
+https://softdentalcare.com/index.php/privacy-policy-2/,3,0,unknown,/privacy-policy/,gsc-pages-16m,confirmed
+https://softdentalcare.com/index.php/dental-implants/,1,0,unknown,/dental-implants/,gsc-pages-16m,confirmed
+https://softdentalcare.com/index.php/appointment/,1,0,unknown,/contact/,gsc-pages-16m,needs-review
+https://softdentalcare.com/index.php/price-list/,1,0,unknown,/prices/,gsc-pages-16m,confirmed
 http://softdentalcare.com/about,,,unknown,/about/,briefing-footer-link,confirmed
 http://softdentalcare.com/our-work,,,unknown,/reviews/,briefing-footer-link,needs-review
 http://softdentalcare.com/contact,,,unknown,/contact/,briefing-footer-link,confirmed
